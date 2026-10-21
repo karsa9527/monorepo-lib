@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+coverage
+package-lock.json
+*.tgz
+*.min.js
+*.min.css
+.workbuddy
+.idea
+.DS_Store

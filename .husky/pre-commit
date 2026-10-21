@@ -1,0 +1,29 @@
+#!/bin/sh
+# 提交前只校验暂存区文件（lint-staged 会自动向上查找最近的 lint-staged.config.js）
+#
+# GUI Git 客户端（Fork / Sourcetree / IDE）不会加载 shell 配置，
+# nvm / volta / fnm 管理的 node 常常不在 PATH 里，这里做一次兜底探测。
+if ! command -v node >/dev/null 2>&1; then
+  for dir in \
+    "$HOME/.volta/bin" \
+    "$HOME/.fnm/aliases/default/bin" \
+    "$HOME/.asdf/shims" \
+    /opt/homebrew/bin \
+    /usr/local/bin; do
+    if [ -x "$dir/node" ]; then
+      PATH="$dir:$PATH"
+      export PATH
+      break
+    fi
+  done
+
+  if [ -d "$HOME/.nvm/versions/node" ]; then
+    latest_node_bin=$(ls -1d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | sort -V | tail -n 1)
+    if [ -n "$latest_node_bin" ]; then
+      PATH="$latest_node_bin:$PATH"
+      export PATH
+    fi
+  fi
+fi
+
+npx lint-staged

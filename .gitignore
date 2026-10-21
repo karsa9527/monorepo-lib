@@ -1,0 +1,19 @@
+.idea
+.workbuddy
+
+# 依赖与产物
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+*.log
+.vite
+
+# npm 打包产物
+*.tgz
+
+# 系统与编辑器
+.DS_Store
+.vscode/*
+!.vscode/extensions.json

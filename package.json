@@ -1,0 +1,45 @@
+{
+  "name": "monorepo-lib",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Office 前端基础库单仓工程（npm workspaces）：共享工具包 + 按包独立发布 npm",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.tsx",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build:utils": "npm run build -w @office/utils",
+    "dev:utils": "npm run dev -w @office/utils",
+    "pack:utils": "npm pack -w @office/utils",
+    "release:dry": "npm publish -w @office/utils --dry-run",
+    "release:utils": "npm publish -w @office/utils",
+    "prepare": "husky || true"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.71.2",
+    "@typescript-eslint/parser": "^8.71.2",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  },
+  "volta": {
+    "node": "20.20.2"
+  }
+}

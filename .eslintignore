@@ -1,0 +1,5 @@
+# ESLint 自身的忽略清单（与 eslint.config.base.json 的 ignorePatterns 叠加）
+
+node_modules/
+dist/
+coverage/
