@@ -1,6 +1,6 @@
 # monorepo-lib
 
-Office 前端基础库单仓工程（npm workspaces）。与 `monorepo-admin`（应用单仓）分离：
+Office 前端基础库单仓工程（npm workspaces）
 这里只放**可独立发布到 npm** 的基础包，应用侧按版本号安装，而不是以源码直连。
 
 ## 结构
